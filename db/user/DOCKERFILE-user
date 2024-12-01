@@ -1,12 +1,11 @@
 FROM mysql:oracle
 
-COPY user-DDL.sql /docker-entrypoint-initdb.d/
-COPY init-data.sql /docker-entrypoint-initdb.d/
+COPY user/01-user-DDL.sql /docker-entrypoint-initdb.d/
+COPY user/02-init-data.sql /docker-entrypoint-initdb.d/
 
-#Meterlas en archivo aparte para docker compose TODO
-ENV MYSQL_ROOT_PASSWORD=admin-gespyme-2024-99Pabcde
-ENV MYSQL_DATABASE=user_database
-ENV MYSQL_USER=admin
-ENV MYSQL_PASSWORD=admin-gespyme-2024-99Pabcde
+ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+ENV MYSQL_DATABASE=${MYSQL_USER_DATABASE}
+ENV MYSQL_USER=${MYSQL_USER}
+ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
 EXPOSE 3306

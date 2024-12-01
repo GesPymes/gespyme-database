@@ -1,0 +1,100 @@
+version: '3.9'
+
+services:
+  job-db:
+    build:
+      context: .
+      dockerfile: job/DOCKERFILE-job
+    container_name: job_database_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_JOB_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+        - "${PORT_MYSQL_JOB_DATABASE}:3306"
+    volumes:
+      - job-db-data:/var/lib/mysql
+
+  customer-db:
+    build:
+      context: .
+      dockerfile: customer/DOCKERFILE-customer
+    container_name: customer_database_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_CUSTOMER_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+        - "${PORT_MYSQL_CUSTOMER_DATABASE}:3306"
+    volumes:
+      - customer-db-data:/var/lib/mysql
+
+  employee-db:
+    build:
+      context: .
+      dockerfile: employee/DOCKERFILE-employee
+    container_name: employee_database_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_EMPLOYEE_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+        - "${PORT_MYSQL_EMPLOYEE_DATABASE}:3306"
+    volumes:
+      - employee-db-data:/var/lib/mysql
+
+  invoice-db:
+    build:
+      context: .
+      dockerfile: invoice/DOCKERFILE-invoice
+    container_name: invoice_database_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_INVOICE_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+        - "${PORT_MYSQL_INVOICE_DATABASE}:3306"
+    volumes:
+      - invoice-db-data:/var/lib/mysql
+
+  user-db:
+    build:
+      context: .
+      dockerfile: user/DOCKERFILE-user
+    container_name: user_database_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_USER_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${PORT_MYSQL_USER_DATABASE}:3306"
+    volumes:
+      - user-db-data:/var/lib/mysql
+
+  payment-db:
+    build:
+      context: .
+      dockerfile: payment/DOCKERFILE-payment
+    container_name: payment_database_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_PAYMENT_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${PORT_MYSQL_PAYMENT_DATABASE}:3306"
+    volumes:
+      - payment-db-data:/var/lib/mysql
+
+volumes:
+  job-db-data:
+  user-db-data:
+  invoice-db-data:
+  customer-db-data:
+  employee-db-data:
+  payment-db-data:

@@ -17,12 +17,11 @@ USE `payment_database` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `payment_database`.`payment` (
   `payment_id` INT NOT NULL,
-  `appointment_id` VARCHAR(50) NOT NULL,
-  `status` VARCHAR(50) NOT NULL,
+  `appointment_id` VARCHAR(255) NOT NULL,
+  `status` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`payment_id`))
 ENGINE = InnoDB;
 
-CREATE USER 'admin' IDENTIFIED BY 'admin-gespyme-2024-99Pabcde';
 GRANT ALL PRIVILEGES ON payment_database.* TO 'admin'@'%';
 
 CREATE USER 'reader' IDENTIFIED BY 'admin-gespyme-2024-99Qabcde';

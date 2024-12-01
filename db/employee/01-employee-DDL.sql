@@ -7,36 +7,32 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `employee_database` DEFAULT CHARACTER SET utf8 ;
+USE `employee_database` ;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`EMPLOYEE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`EMPLOYEE` (
-                                                 `employee_id` VARCHAR(45) NOT NULL,
-    `name` VARCHAR(100) NOT NULL,
+CREATE TABLE IF NOT EXISTS `employee_database`.`employee` (
+                                                 `employee_id` VARCHAR(255) NOT NULL,
+    `user_id` VARCHAR(255) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
-    `address` VARCHAR(355) NOT NULL,
-    `mobile_phone` VARCHAR(20) NOT NULL,
-    `social_security_number` VARCHAR(45) NOT NULL,
-    `id_number` VARCHAR(45) NOT NULL,
+    `address` VARCHAR(455) NOT NULL,
+    `mobile_phone` VARCHAR(255) NOT NULL,
+    `social_security_number` VARCHAR(255) NOT NULL,
+    `id_number` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`employee_id`))
     ENGINE = InnoDB;
 
-CREATE USER 'admin' IDENTIFIED BY 'admin-gespyme-2024-99Pabcde';
+GRANT ALL PRIVILEGES ON customer_database.* TO 'admin'@'%';
 
-GRANT ALL ON `mydb`.* TO 'admin';
+GRANT ALL ON `employee_database`.* TO 'admin'@'%';
+
 CREATE USER 'reader' IDENTIFIED BY 'reader-gespyme-2024-99Qabcde';
 
-GRANT SELECT ON TABLE `mydb`.* TO 'reader';
+GRANT SELECT ON TABLE `employee_database`.* TO 'reader'@'%';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

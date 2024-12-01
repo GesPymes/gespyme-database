@@ -16,8 +16,8 @@ USE `customer_database` ;
 -- Table `customer_database`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `customer_database`.`customer` (
-  `customer_id` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(100) NOT NULL,
+  `customer_id` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
   `last_name` VARCHAR(255) NOT NULL,
   `address` VARCHAR(355) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
@@ -26,7 +26,6 @@ CREATE TABLE IF NOT EXISTS `customer_database`.`customer` (
   PRIMARY KEY (`customer_id`))
 ENGINE = InnoDB;
 
-CREATE USER 'admin' IDENTIFIED BY 'admin-gespyme-2024-99Pabcde';
 GRANT ALL PRIVILEGES ON customer_database.* TO 'admin'@'%';
 
 CREATE USER 'reader' IDENTIFIED BY 'admin-gespyme-2024-99Qabcde';

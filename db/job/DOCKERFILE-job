@@ -1,0 +1,11 @@
+FROM mysql:oracle
+
+COPY job/01-job-DDL.sql /docker-entrypoint-initdb.d/
+COPY job/02-init-data.sql /docker-entrypoint-initdb.d/
+
+ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+ENV MYSQL_DATABASE=${MYSQL_JOB_DATABASE}
+ENV MYSQL_USER=${MYSQL_USER}
+ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+EXPOSE 3306

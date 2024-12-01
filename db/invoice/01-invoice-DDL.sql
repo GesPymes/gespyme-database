@@ -16,10 +16,9 @@ USE `invoice_database` ;
 -- Table `invoice_database`.`invoice_data`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `invoice_database`.`invoice_data` (
-  `invoice_data_id` VARCHAR(50) NOT NULL,
-  `appointment_id` VARCHAR(50) NOT NULL,
-    `customer_id` VARCHAR(50) NOT NULL,
-    `description` VARCHAR(50) NOT NULL,
+  `invoice_data_id` VARCHAR(255) NOT NULL,
+  `appointment_id` VARCHAR(255) NOT NULL,
+    `description` VARCHAR(255) NOT NULL,
   `subtotal_amount` INT NOT NULL,
   `tax_rate` INT NOT NULL,
   `total_amount` INT NOT NULL,
@@ -32,10 +31,10 @@ ENGINE = InnoDB;
 -- Table `invoice_database`.`invoice_order`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `invoice_database`.`invoice_order` (
-  `invoice_order_id` VARCHAR(50) NOT NULL,
-  `invoice_data_id` VARCHAR(50) NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
-  `appointmentId` VARCHAR(45) NULL,
+  `invoice_order_id` VARCHAR(255) NOT NULL,
+  `invoice_data_id` VARCHAR(255) NOT NULL,
+  `status` VARCHAR(255) NOT NULL,
+  `appointment_id` VARCHAR(255) NULL,
   PRIMARY KEY (`invoice_order_id`),
   INDEX `fk_invoice_order_invoice_data1_idx` (`invoice_data_id` ASC) VISIBLE,
   CONSTRAINT `fk_invoice_order_invoice_data1`
@@ -45,7 +44,6 @@ CREATE TABLE IF NOT EXISTS `invoice_database`.`invoice_order` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE USER 'admin' IDENTIFIED BY 'admin-gespyme-2024-99Pabcde';
 GRANT ALL PRIVILEGES ON invoice_database.* TO 'admin'@'%';
 
 CREATE USER 'reader' IDENTIFIED BY 'admin-gespyme-2024-99Qabcde';
