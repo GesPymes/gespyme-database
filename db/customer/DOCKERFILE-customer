@@ -1,7 +1,6 @@
 FROM mysql:oracle
 
 COPY customer/01-customer-DDL.sql /docker-entrypoint-initdb.d/
-COPY customer/02-init-inserts.sql /docker-entrypoint-initdb.d/
 
 ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 ENV MYSQL_DATABASE=${MYSQL_CUSTOMER_DATABASE}

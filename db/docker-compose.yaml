@@ -76,25 +76,9 @@ services:
     volumes:
       - user-db-data:/var/lib/mysql
 
-  payment-db:
-    build:
-      context: .
-      dockerfile: payment/DOCKERFILE-payment
-    container_name: payment_database_container
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_PAYMENT_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    ports:
-      - "${PORT_MYSQL_PAYMENT_DATABASE}:3306"
-    volumes:
-      - payment-db-data:/var/lib/mysql
-
 volumes:
   job-db-data:
   user-db-data:
   invoice-db-data:
   customer-db-data:
   employee-db-data:
-  payment-db-data:

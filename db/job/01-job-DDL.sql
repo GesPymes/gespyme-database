@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `job_database`.`jobs_by_calendar` (
 
 -- -----------------------------------------------------
 -- Table `job_database`.`periodic_job`
--- -----------------------------------------------------
+--
 CREATE TABLE IF NOT EXISTS `job_database`.`periodic_job` (
                                                              `job_id` VARCHAR(255) NOT NULL,
     `customer_id` VARCHAR(255) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `job_database`.`appointment` (
 -- Table `job_database`.`users_by_calendar`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `job_database`.`users_by_calendar` (
-                                                                  `users_by_calendar_id` VARCHAR(255) NOT NULL,
+     `users_by_calendar_id` VARCHAR(255) NOT NULL,
     `calendar_id` VARCHAR(255) NOT NULL,
     `user_email` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`users_by_calendar_id`)

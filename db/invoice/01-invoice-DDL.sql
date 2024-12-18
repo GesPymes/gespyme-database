@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `invoice_database`.`invoice_data` (
   `invoice_data_id` VARCHAR(255) NOT NULL,
   `appointment_id` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
+    `customer_id` VARCHAR(255) NOT NULL,
   `subtotal_amount` INT NOT NULL,
   `tax_rate` INT NOT NULL,
   `total_amount` INT NOT NULL,

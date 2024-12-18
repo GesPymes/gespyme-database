@@ -1,7 +1,6 @@
 FROM mysql:oracle
 
 COPY invoice/01-invoice-DDL.sql /docker-entrypoint-initdb.d/
-COPY invoice/02-init-data.sql /docker-entrypoint-initdb.d/
 
 ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 ENV MYSQL_DATABASE=${MYSQL_INVOICE_DATABASE}
